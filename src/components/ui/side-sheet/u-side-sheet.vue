@@ -21,7 +21,7 @@
     >
       <div class="flex flex-row justify-between">
         <p class="flex-1">
-          <u-icon
+          <u-svg
             :name="closeIcon"
             size="1.5"
             class="cursor-pointer"
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import UIcon from "~/components/ui/svg/u-svg.vue";
+import USvg from "~/components/ui/svg/u-svg.vue";
 import UDivider from "~/components/ui/divider/u-divider.vue";
 import type { WidthAndHeightUnion } from "~/types/propTypes";
 

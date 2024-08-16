@@ -7,15 +7,15 @@
       v-if="scrollTopShouldBeFix && appScrolledAmount > 500"
       class="mt-5 z-20 fixed left-1/2 -translate-x-1/2 bottom-24"
     >
-      <u-icon @click="scrollTop" name="arrow-square-up" size="1.6" />
+      <u-svg @click="scrollTop" name="arrow-square-up" size="1.6" />
     </div>
   </transition>
   <div class="mt-5 flex items-center justify-center" ref="scrollTopEl">
-    <u-icon @click="scrollTop" name="arrow-square-up" size="1.6" />
+    <u-svg @click="scrollTop" name="arrow-square-up" size="1.6" />
   </div>
 </template>
 <script setup lang="ts">
-import UIcon from "~/components/ui/svg/u-svg.vue";
+import USvg from "~/components/ui/svg/u-svg.vue";
 import USpinner from "~/components/ui/spinner/u-spinner.vue";
 import { observer } from "~/utils/observer";
 import { storeToRefs } from "pinia";

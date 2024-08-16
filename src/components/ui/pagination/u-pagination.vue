@@ -4,7 +4,7 @@
       class="w-8 h-8 rounded-lg flex justify-center items-center bg-gray-very-light aspect-square cursor-pointer mx-0.5"
       @click="changeModel(model - 1)"
     >
-      <u-icon name="chevron-r" />
+      <u-svg name="chevron-r" />
     </span>
     <span
       class="h-8 rounded-lg flex justify-center items-center bg-gray-very-light aspect-square cursor-pointer text-xs px-7 mx-0.5"
@@ -40,12 +40,12 @@
       class="w-8 h-8 rounded-lg flex justify-center items-center bg-gray-very-light aspect-square cursor-pointer mx-0.5"
       @click="changeModel(model + 1)"
     >
-      <u-icon name="chevron-l" />
+      <u-svg name="chevron-l" />
     </span>
   </div>
 </template>
 <script setup lang="ts">
-import UIcon from "~/components/ui/svg/u-svg.vue";
+import USvg from "~/components/ui/svg/u-svg.vue";
 import { useQuery } from "~/composables/query/useQuery";
 
 interface ZPaginationProps {
