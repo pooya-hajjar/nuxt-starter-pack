@@ -44,7 +44,7 @@ import UIcon from "~/components/ui/svg/u-svg.vue";
 import UDivider from "~/components/ui/divider/u-divider.vue";
 import type { WidthAndHeightUnion } from "~/types/propTypes";
 
-interface ZSideSheetProps {
+interface USideSheetProps {
   modelValue: boolean;
   width?: WidthAndHeightUnion;
   title?: string;
@@ -54,7 +54,7 @@ interface ZSideSheetProps {
   closeIcon?: string;
 }
 
-const props = withDefaults(defineProps<ZSideSheetProps>(), {
+const props = withDefaults(defineProps<USideSheetProps>(), {
   title: "",
   hasLine: true,
   direction: "right",
