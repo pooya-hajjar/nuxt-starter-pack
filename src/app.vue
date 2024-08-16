@@ -1,6 +1,13 @@
 <template>
-  <div id="app">
-    <NuxtLoadingIndicator />
+  <NuxtLoadingIndicator />
+  <div
+    id="app"
+    @wheel="onAppScroll"
+    @scroll="onAppScroll"
+    @touchmove="onAppScroll"
+    class="h-full w-full fixed"
+    :class="isAnyPopupOpen ? 'overflow-hidden ' : 'overflow-auto '"
+  >
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -8,5 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import uBtn from "./components/ui/btn/u-btn.vue";
+import { usePopupStore } from "./composables/popup/popup.store";
+import { usePublic } from "./composables/public/usePublic";
+
+const { onAppScroll } = usePublic();
+const { isAnyPopupOpen } = storeToRefs(usePopupStore());
 </script>
