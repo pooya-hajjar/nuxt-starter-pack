@@ -1,6 +1,7 @@
 <template>
   <NuxtLoadingIndicator />
   <div
+    dir="rtl"
     id="app"
     @wheel="onAppScroll"
     @scroll="onAppScroll"
