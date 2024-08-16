@@ -2,6 +2,12 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
 
+  runtimeConfig: {
+    public: {
+      VERSION: process.env.VERSION,
+    },
+  },
+
   devtools: { enabled: true },
 
   modules: [
