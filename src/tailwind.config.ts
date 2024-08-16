@@ -1,7 +1,7 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 export default {
-  important : false,
+  important: true,
   content: [
     `./dynamic-classes.txt`,
     `./components/**/*.{vue,js,ts}`,
@@ -14,11 +14,10 @@ export default {
     `./app.{js,ts,vue}`,
     `./Error.{js,ts,vue}`,
     `./error.{js,ts,vue}`,
-    `./app.config.{js,ts}`
+    `./app.config.{js,ts}`,
   ],
   theme: {
     extend: {},
   },
   plugins: [],
-} satisfies Config
-
+} satisfies Config;
