@@ -1,7 +1,4 @@
-export default function formatString(
-  template: string,
-  ...args: Array<any>
-): string {
+export function formatString(template: string, ...args: Array<any>): string {
   if (typeof args[0] === "object") {
     // If the first argument is an object, treat it as key-value pairs
     const data: object = args[0];

@@ -3,6 +3,7 @@ import type { Config } from 'tailwindcss'
 export default {
   important : false,
   content: [
+    `./dynamic-classes.txt`,
     `./components/**/*.{vue,js,ts}`,
     `./layouts/**/*.vue`,
     `./pages/**/*.vue`,
