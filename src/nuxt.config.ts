@@ -65,8 +65,8 @@ export default defineNuxtConfig({
         "ring",
         "text",
         "caret",
-        "after:bg-",
-        "before:bg-",
+        "after:bg",
+        "before:bg",
       ];
       const staticClasses =
         "rounded-xs rounded-sm rounded-md rounded-base rounded-lg rounded-xl rounded-2xl rounded-3xl rounded-full rounded-none text-xs text-sm text-md text-base text-lg text-xl text-2xl text-3xl";

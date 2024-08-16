@@ -2,5 +2,5 @@ rounded-xs rounded-sm rounded-md rounded-base rounded-lg rounded-xl rounded-2xl 
 ring-white ring-black ring-state-300 ring-state-500 ring-red-600 ring-indigo-950 ring-blue-400 
 text-white text-black text-state-300 text-state-500 text-red-600 text-indigo-950 text-blue-400 
 caret-white caret-black caret-state-300 caret-state-500 caret-red-600 caret-indigo-950 caret-blue-400 
-after:bg--white after:bg--black after:bg--state-300 after:bg--state-500 after:bg--red-600 after:bg--indigo-950 after:bg--blue-400 
-before:bg--white before:bg--black before:bg--state-300 before:bg--state-500 before:bg--red-600 before:bg--indigo-950 before:bg--blue-400 
+after:bg-white after:bg-black after:bg-state-300 after:bg-state-500 after:bg-red-600 after:bg-indigo-950 after:bg-blue-400 
+before:bg-white before:bg-black before:bg-state-300 before:bg-state-500 before:bg-red-600 before:bg-indigo-950 before:bg-blue-400 
