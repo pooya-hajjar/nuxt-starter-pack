@@ -23,9 +23,9 @@
 <script setup lang="ts">
 import type { ColorsUnion } from "~/types/propTypes.ts";
 interface USpinnerProps {
-  color: ColorsUnion;
-  width: number | string;
-  size: number | string;
+  color?: ColorsUnion;
+  width?: number | string;
+  size?: number | string;
 }
 
 const props = withDefaults(defineProps<USpinnerProps>(), {
