@@ -1,0 +1,7 @@
+white
+black
+state-300
+state-500
+red-600
+indigo-950
+blue-400
