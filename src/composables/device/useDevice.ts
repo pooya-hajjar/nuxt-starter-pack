@@ -37,7 +37,7 @@ export const useDevice = () => {
 
   const isMobile = detectDevice() === "mobile";
   const isTablet = detectDevice() === "tablet";
-  const isDesktop = detectDevice() === "desktop" || !detectDevice() || isTablet; //? temporary isDesktop = isDesktop || isTablet
+  const isDesktop = detectDevice() === "desktop" || !detectDevice()
 
   const isFireFox = getUserBrowser() === "Firefox";
   const isChrome = getUserBrowser() === "Chrome";
