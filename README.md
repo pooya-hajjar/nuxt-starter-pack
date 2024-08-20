@@ -40,10 +40,26 @@ Add your custom components to the `components/` directory and composables to the
 
 Add your custom components to the `components/` directory and composables to the `composables/` directory. This structure helps maintain a clean and organized project.
 
+## USAGE
+
+install the pack globally
+```bash
+npm i create-nuxt-starter-pack -g
+```
+
+run the script
+```bash
+npx create-nuxt-starter [project-name]
+```
+
 ## TODO
 
 - [ ] Add a CLI tool to make setup and customization easier.
 - [ ] Enhance and expand the starter pack features.
+
+
+
+
 
 
 
