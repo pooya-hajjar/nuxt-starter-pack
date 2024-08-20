@@ -7,6 +7,7 @@ Welcome to the Nuxt.js Starter Pack! This repository is designed to give you a h
 This starter pack includes:
 
 - **Nuxt.js**: A powerful framework for building server-side rendered applications, static websites, and more.
+- **High-Level Components**: A collection of thoroughly tested and debugged high-level customizable components (try features of u-text-input, u-btn, u-dialog for testing).
 - **Pinia**: A lightweight and intuitive state management library for Vue.js.
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development, with dynamic class support.
 - **Nuxt Image**: An optimized image handling module for Nuxt.js.
