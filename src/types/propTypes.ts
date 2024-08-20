@@ -23,6 +23,11 @@ enum TextFieldVariant {
   "flat",
 }
 
+enum TextAreaVariant {
+  "outlined",
+  "flat",
+}
+
 enum TextFieldType {
   "text",
   "email",
@@ -87,5 +92,6 @@ export type TextFieldVariantUnion = keyof typeof TextFieldVariant;
 export type TextFieldTypeUnion = keyof typeof TextFieldType;
 export type LinkTargetUnion = keyof typeof LinkTarget;
 export type TextFieldModeUnion = keyof typeof TextFieldInputMode;
+export type TextAreaVariantUnion = keyof typeof TextAreaVariant
 export type CursorsUnion = keyof typeof Cursors;
 export type CurrencyUnion = keyof typeof Currencies;
