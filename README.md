@@ -36,10 +36,6 @@ Feel free to add or remove Nuxt modules based on your project's needs. Update th
 
 Add your custom components to the `components/` directory and composables to the `composables/` directory. This structure helps maintain a clean and organized project.
 
-### Utils Functions
-
-Add your custom components to the `components/` directory and composables to the `composables/` directory. This structure helps maintain a clean and organized project.
-
 ## USAGE
 
 install the pack globally
