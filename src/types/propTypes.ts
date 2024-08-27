@@ -77,6 +77,31 @@ enum Currencies {
   "rial",
 }
 
+export interface DPDates {
+  start: string
+  finish: string
+}
+
+export interface DPYear {
+  value:number
+}
+
+export interface DPMonth {
+  name: string
+  value: number
+  startWeekDay: number
+  countOfDays: number
+}
+
+export interface DPDate{
+  isSet: boolean
+  YYYY: number
+  MM: number
+  DD: number
+  unix: number
+}
+
+
 export type ColorsUnion = keyof typeof DefaultColors;
 export type SizesUnion = keyof typeof Sizes;
 export type RoundedUnion = SizesUnion | "none" | "full";
