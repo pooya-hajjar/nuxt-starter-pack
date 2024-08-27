@@ -16,6 +16,7 @@
     "@pinia/nuxt": "^0.5.3",
     "@vee-validate/rules": "^4.13.1",
     "nuxt": "^3.12.4",
+    "persian-date": "^1.1.0",
     "pinia": "^2.2.2",
     "ua-parser-js": "^1.0.38",
     "vee-validate": "^4.13.1",
