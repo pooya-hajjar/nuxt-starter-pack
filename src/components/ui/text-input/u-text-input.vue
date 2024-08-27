@@ -8,31 +8,23 @@
       :name="name"
       :rules="rules"
     >
+
       <div
         ref="outlinedInputEl"
         v-if="variant === 'outlined'"
         class="relative flex items-center"
-        :style="{ width: width, height: height }"
+        :style="{width: width, height: height}"
       >
         <input
           :type="type"
           ref="inpRef"
-          v-bind="{ ...getAttrs, ...field }"
+          v-bind="{...getAttrs , ...field}"
           v-model="formattedValue"
           @keydown="onKeyDown"
-          :class="[
-            `items-center w-full h-full duration-300 text-sm ease-out ring-1 focus:ring-2 outline-none border-none caret-${color} ring-${props.color} focus:ring-${props.color} rounded-${rounded} text-${textColor}`,
-            !!formattedValue ? 'ring-2' : '',
-            !preventLtr && 'is-ltr',
-          ]"
+          :class="[`items-center w-full h-full duration-300 text-sm ease-out ring-1 focus:ring-2 outline-none border-none caret-${color} ring-${props.color} focus:ring-${props.color} rounded-${rounded} text-${textColor}`, !!formattedValue ? 'ring-2' : '' , !preventLtr && 'is-ltr']"
           :id="name"
-          :style="{
-            paddingRight: rightInnerWidth + 16 + 'px',
-            paddingLeft: leftInnerWidth + 16 + 'px',
-          }"
-          :placeholder="
-            showOutlinedPlaceHolder && placeholder ? String(placeholder) : ''
-          "
+          :style="{paddingRight: rightInnerWidth + 16 + 'px', paddingLeft: leftInnerWidth + 16 + 'px'}"
+          :placeholder="showOutlinedPlaceHolder && placeholder ? String(placeholder) : ''"
           @blur="onOutlinedBlur"
           @focus="onOutlinedFocus"
         />
@@ -40,231 +32,148 @@
           id="label-outline-input"
           :for="name"
           :style="{ right: rightInnerWidth + 16 + 'px !important' }"
-          :class="[
-            `transition-all rounded-full duration-[130px] ease-out absolute opacity-100 pointer-events-none scale-[.95] text-${textColor}`,
-          ]"
+          :class="[`transition-all rounded-full duration-[130px] ease-out absolute opacity-100 pointer-events-none scale-[.95] text-${textColor}`]"
         >
           <slot name="label" />
         </label>
         <span
           ref="leftInner"
           class="absolute left-2 select-none"
-          @click="
-            clearable && type !== 'number' && type !== 'email'
-              ? resetModel(true)
-              : null
-          "
+          @click="clearable && type !== 'number' && type !== 'email' ? resetModel(true) : null"
         >
-          <slot name="left-inner">
-            <div
-              v-if="
-                !!formattedValue &&
-                clearable &&
-                type !== 'number' &&
-                type !== 'email'
-              "
-              class="text-2xl cursor-pointer"
-            >
-              <u-svg name="close" size="1.8" />
-            </div>
-          </slot>
-        </span>
+      <slot name="left-inner">
+        <div v-if="!!formattedValue && clearable && type !== 'number' && type !== 'email'"
+             class="text-2xl cursor-pointer">
+          <u-icon name="close" size="1.8" />
+        </div>
+      </slot>
+    </span>
         <span
           ref="rightInner"
           class="absolute right-2 select-none"
-          @click="
-            clearable && (type === 'number' || type === 'email')
-              ? resetModel(true)
-              : null
-          "
+          @click="clearable && (type === 'number' || type === 'email') ? resetModel(true) : null"
         >
-          <slot name="right-inner">
-            <div
-              v-if="
-                !!formattedValue &&
-                clearable &&
-                (type === 'number' || type === 'email')
-              "
-              class="text-2xl cursor-pointer"
-            >
-              <u-svg name="close" size="1.8" />
-            </div>
-          </slot>
-        </span>
+      <slot name="right-inner">
+        <div v-if="!!formattedValue && clearable && (type === 'number' || type === 'email')"
+             class="text-2xl cursor-pointer">
+          <u-icon name="close" size="1.8" />
+        </div>
+      </slot>
+    </span>
       </div>
 
       <div
         v-if="variant === 'underlined'"
         ref="underlinedInputEl"
         class="relative w-fit"
-        :style="{ height: height, width: width }"
+        :style="{height: height, width: width}"
       >
         <input
           :type="type"
           ref="inpRef"
-          v-bind="{ ...getAttrs, ...field }"
+          v-bind="{...getAttrs , ...field}"
           v-model="formattedValue"
           @keydown="onKeyDown"
-          :style="{
-            paddingRight: rightInnerWidth + 16 + 'px !important',
-            paddingLeft: leftInnerWidth + 16 + 'px !important',
-          }"
-          :placeholder="
-            showUnderlinedPlaceholder && placeholder ? String(placeholder) : ''
-          "
-          :class="[
-            `block bg-transparent py-3 outline-none border-none h-full w-full`,
-            !preventLtr && 'is-ltr',
-          ]"
+          :style="{paddingRight: rightInnerWidth + 16 + 'px !important', paddingLeft: leftInnerWidth + 16 + 'px !important'}"
+          :placeholder="showUnderlinedPlaceholder && placeholder ? String(placeholder) : ''"
+          :class="[`block bg-transparent py-3 outline-none border-none h-full w-full` ,!preventLtr && 'is-ltr']"
           :maxlength="maxLength"
           :id="name"
           @blur="onUnderlinedBlur"
           @focus="onUnderlinedFocus"
         />
         <span
-          :class="`block relative after:absolute after:w-0 after:h-full after:bottom-0 after:transition-all after:transition-gpu after:ease-in-out after:duration-300 after:bg-${color} w-full min-w-full h-0.5 bg-gray rounded-${rounded}`"
-        >
-        </span>
-        <label
-          :for="name"
-          :class="`absolute pointer-events-none transition-all text-${textColor}`"
-          :style="{ right: rightInnerWidth + 16 + 'px !important' }"
-        >
+          :class="`block relative after:absolute after:w-0 after:h-full after:bottom-0 after:transition-all after:transition-gpu after:ease-in-out after:duration-300 after:bg-${color} w-full min-w-full h-0.5 bg-gray rounded-${rounded}`">
+    </span>
+        <label :for="name" :class="`absolute pointer-events-none transition-all text-${textColor}`"
+               :style="{ right: rightInnerWidth + 16 + 'px !important' }">
           <slot name="label" />
         </label>
         <span
           ref="leftInner"
           class="absolute left-2 select-none"
-          @click="
-            clearable && type !== 'number' && type !== 'email'
-              ? resetModel(true)
-              : null
-          "
+          @click="clearable && type !== 'number' && type !== 'email' ? resetModel(true) : null"
         >
-          <slot name="left-inner">
-            <div
-              v-if="
-                !!formattedValue &&
-                clearable &&
-                type !== 'number' &&
-                type !== 'email'
-              "
-              class="text-2xl cursor-pointer"
-            >
-              <u-svg name="close" size="1.8" />
-            </div>
-          </slot>
-        </span>
+      <slot name="left-inner">
+        <div v-if="!!formattedValue && clearable && type !== 'number' && type !== 'email'"
+             class="text-2xl cursor-pointer">
+          <u-icon name="close" size="1.8" />
+        </div>
+      </slot>
+    </span>
         <span
           ref="rightInner"
           class="absolute right-2 select-none"
-          @click="
-            clearable && (type === 'number' || type === 'email')
-              ? resetModel(true)
-              : null
-          "
+          @click="clearable && (type === 'number' || type === 'email') ? resetModel(true) : null"
         >
-          <slot name="right-inner">
-            <div
-              v-if="
-                !!formattedValue &&
-                clearable &&
-                (type === 'number' || type === 'email')
-              "
-              class="text-2xl cursor-pointer"
-            >
-              <u-svg name="close" size="1.8" />
-            </div>
-          </slot>
-        </span>
+      <slot name="right-inner">
+        <div v-if="!!formattedValue && clearable && (type === 'number' || type === 'email')"
+             class="text-2xl cursor-pointer">
+          <u-icon name="close" size="1.8" />
+        </div>
+      </slot>
+    </span>
       </div>
 
-      <div v-if="variant === 'flat'" class="flex flex-col gap-1.5">
-        <label
-          v-if="name && slots.label"
-          :for="name"
-          :class="`text-${textColor} cursor-pointer`"
-        >
+      <div
+        v-if="variant === 'flat'"
+        class="flex flex-col gap-1.5"
+      >
+        <label v-if="name && slots.label" :for="name" :class="`text-${textColor} cursor-pointer`">
           <slot name="label" />
         </label>
-        <div
-          ref="flatInputEl"
-          class="relative flex items-center"
-          :style="{ height: height, width: width }"
-        >
+        <div ref="flatInputEl" class="relative flex items-center" :style="{height: height, width: width}">
           <input
             :type="type"
             ref="inpRef"
-            v-bind="{ ...getAttrs, ...field }"
+            v-bind="{...getAttrs , ...field}"
             v-model="formattedValue"
             @keydown="onKeyDown"
             :id="name"
             :maxlength="maxLength"
             :placeholder="placeholder ? String(placeholder) : ''"
-            :style="{
-              paddingRight: rightInnerWidth + 16 + 'px !important',
-              paddingLeft: leftInnerWidth + 16 + 'px !important',
-            }"
-            :class="[
-              `duration-300 w-full h-full text-sm ease-out p-3 ring-1 focus:ring-2 outline-none border-none caret-${color} ring-${props.color} focus:ring-${props.color} rounded-${rounded} text-${textColor}`,
-              !!formattedValue ? 'ring-2' : '',
-              !preventLtr && 'is-ltr',
-            ]"
+            :style="{paddingRight: rightInnerWidth + 16 + 'px !important',paddingLeft: leftInnerWidth + 16 + 'px !important'}"
+            :class="[`duration-300 w-full h-full text-sm ease-out p-3 ring-1 focus:ring-2 outline-none border-none caret-${color} ring-${props.color} focus:ring-${props.color} rounded-${rounded} text-${textColor}`, !!formattedValue ? 'ring-2' : '' , !preventLtr && 'is-ltr']"
           />
           <span
             ref="leftInner"
             class="absolute left-2 select-none"
-            @click="
-              clearable && type !== 'number' && type !== 'email'
-                ? resetModel(true)
-                : null
-            "
+            @click="clearable && type !== 'number' && type !== 'email' ? resetModel(true) : null"
           >
-            <slot name="left-inner">
-              <div
-                v-if="
-                  !!formattedValue &&
-                  clearable &&
-                  type !== 'number' &&
-                  type !== 'email'
-                "
-                class="text-2xl cursor-pointer"
-              >
-                <u-svg name="close" size="1.8" />
-              </div>
-            </slot>
-          </span>
+        <slot name="left-inner">
+          <div v-if="!!formattedValue && clearable && type !== 'number' && type !== 'email'"
+               class="text-2xl cursor-pointer">
+            <u-icon name="close" size="1.8" />
+          </div>
+        </slot>
+      </span>
           <span
             ref="rightInner"
             class="absolute right-2 select-none"
-            @click="
-              clearable && (type === 'number' || type === 'email')
-                ? resetModel(true)
-                : null
-            "
+            @click="clearable && (type === 'number' || type === 'email') ? resetModel(true) : null"
           >
-            <slot name="right-inner">
-              <div
-                v-if="
-                  !!formattedValue &&
-                  clearable &&
-                  (type === 'number' || type === 'email')
-                "
-                class="text-2xl cursor-pointer"
-              >
-                <u-svg name="close" size="1.8" />
-              </div>
-            </slot>
-          </span>
+        <slot name="right-inner">
+          <div v-if="!!formattedValue && clearable && (type === 'number' || type === 'email')"
+               class="text-2xl cursor-pointer">
+            <u-icon name="close" size="1.8" />
+          </div>
+        </slot>
+      </span>
         </div>
       </div>
+
     </Field>
-    <div class="mb-4">
+    <div v-if="rules" class="mb-4">
       <transition name="fade">
-        <ErrorMessage as="div" class="mt-1" :name="name" v-slot="{ message }">
-          <span class="text-xs text-error">
-            {{ message }}
-          </span>
+        <ErrorMessage
+          as="div"
+          class="mt-1"
+          :name="name"
+          v-slot="{ message }"
+        >
+                        <span class="text-xs text-error">
+                          {{ message }}
+                        </span>
         </ErrorMessage>
       </transition>
     </div>
@@ -274,42 +183,41 @@
 <script setup lang="ts">
 import type {
   ColorsUnion,
-  RoundedUnion,
-  TextFieldTypeUnion,
+  RoundedUnion, TextFieldTypeUnion,
   TextFieldVariantUnion,
   WidthAndHeightUnion,
-  TextFieldModeUnion,
+  TextFieldModeUnion
 } from "~/types/propTypes";
-import USvg from "~/components/ui/svg/u-svg.vue";
+import UIcon from "~/components/ui/u-icon/u-icon.vue";
 import { ErrorMessage, Field } from "vee-validate";
 
 interface ZTextFieldProps {
-  modelValue?: string | number;
-  name?: string;
-  type?: TextFieldTypeUnion;
-  placeholder?: string;
-  variant?: TextFieldVariantUnion;
-  color?: ColorsUnion;
-  textColor?: ColorsUnion;
-  clearable?: boolean;
-  rounded?: RoundedUnion;
-  height?: WidthAndHeightUnion;
-  width?: WidthAndHeightUnion;
-  maxLength?: number;
-  isPrice?: boolean;
-  rules?: string;
-  defaultValue?: string;
-  preventLtr?: false;
+  modelValue?: string | number
+  name?: string
+  type?: TextFieldTypeUnion
+  placeholder?: string
+  variant?: TextFieldVariantUnion
+  color?: ColorsUnion
+  textColor?: ColorsUnion
+  clearable?: boolean
+  rounded?: RoundedUnion
+  height?: WidthAndHeightUnion
+  width?: WidthAndHeightUnion
+  maxLength?: number
+  isPrice?: boolean
+  rules?: string
+  defaultValue?: string
+  preventLtr?: false,
   validateOptions?: {
-    validateOnMount?: boolean;
-    validateOnChange?: boolean;
-  };
+    validateOnMount?: boolean
+    validateOnChange?: boolean
+  }
 }
 
 const props = withDefaults(defineProps<ZTextFieldProps>(), {
   variant: "outlined",
   textColor: "black",
-  color: "indigo-900",
+  color: "primary",
   clearable: false,
   rounded: "lg",
   width: "100%",
@@ -321,8 +229,8 @@ const props = withDefaults(defineProps<ZTextFieldProps>(), {
   preventLtr: false,
   validateOptions: () => ({
     validateOnMount: false,
-    validateOnChange: true,
-  }),
+    validateOnChange: true
+  })
 });
 const emit = defineEmits(["update:modelValue"]);
 
@@ -336,17 +244,13 @@ const model = computed({
   set: (newVal: string | number) => {
     val.value = newVal;
     emit("update:modelValue", val.value);
-  },
+  }
 });
 
 const formattedValue = computed({
   get: () => {
-    if (!val.value) {
-      return "";
-    } else if (props.isPrice) {
-      return formatNumber(val.value);
-    }
-    return val.value;
+    return props.isPrice ? formatNumber(model.value)
+      : model.value;
   },
   set: (newVal: string | number) => {
     if (!newVal) {
@@ -358,7 +262,7 @@ const formattedValue = computed({
     }
     val.value = latinNumber(val.value);
     emit("update:modelValue", val.value);
-  },
+  }
 });
 
 const attrs = useAttrs();
@@ -384,7 +288,7 @@ const showUnderlinedPlaceholder = ref(false);
 const getAttrs = computed(() => ({
   ...attrs,
   type: props.type === "number" ? "text" : props.type,
-  inputmode: getInputMode(props.type),
+  inputmode: getInputMode(props.type)
 }));
 
 const getInputMode = (type: TextFieldTypeUnion): TextFieldModeUnion => {
@@ -462,15 +366,15 @@ const resetModel = (blur = false) => {
   }
 };
 
-const formatNumber = (value: string | number) => {
+const formatNumber = (value) => {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-const parseNumber = (value: string | number) => {
+const parseNumber = (value) => {
   return parseFloat(value.toString().replace(/,/g, ""));
 };
 
-const onKeyDown = (event: any) => {
+const onKeyDown = (event) => {
   if (props.type === "number" && !numberTypeValidKeys(event.key)) {
     event.preventDefault();
   }
@@ -530,6 +434,7 @@ onMounted(() => {
     }
   }
 });
+
 </script>
 
 <style scoped lang="scss">

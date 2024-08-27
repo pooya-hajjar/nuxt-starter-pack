@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-full mx-auto mt-6 rounded-lg"
+    class="w-full max-w-full mx-auto rounded-lg"
     :class="[hasDefaultShadow && 'shadow-md']"
   >
     <div v-for="(item, index) in items" :key="index">
@@ -10,7 +10,7 @@
         :class="[
           hasDefaultPadding && 'p-4',
           hasDefaultHover && 'hover:bg-gray-200',
-          headerClasses,
+          headerClasses
         ]"
       >
         <slot
@@ -20,6 +20,7 @@
           <h2 class="text-lg font-semibold">{{ item.title }}</h2>
         </slot>
       </button>
+
       <transition
         name="accordion"
         @before-enter="beforeEnter"
@@ -28,7 +29,6 @@
       >
         <div
           v-if="activeIndex === index"
-          class="overflow-hidden"
           ref="accordionContent"
           :class="[hasDefaultPadding && 'p-4', contentClasses]"
         >
@@ -64,29 +64,46 @@ const props = withDefaults(
   }
 );
 
-const activeIndex = ref(-1);
+const activeIndex = ref<number | null>(null);
 
 const toggle = (index: number) => {
-  activeIndex.value = activeIndex.value === index ? -1 : index;
+  activeIndex.value = activeIndex.value === index ? null : index;
 };
 
-const beforeEnter = (el: any) => {
-  el.style.height = "0";
+const beforeEnter = (el: HTMLElement) => {
+  el.style.height = "0px";
   el.style.opacity = "0";
 };
 
-const enter = (el: any) => {
-  nextTick(() => {
-    el.style.transition = "all 300ms ease-in-out";
-    el.style.height = el.scrollHeight + "px";
+const enter = (el: HTMLElement) => {
+  el.style.height = "auto"; // Temporarily set height to auto to get the full scrollHeight
+  const fullHeight = el.scrollHeight + "px"; // Get the height in pixels
+  el.style.height = "0px"; // Reset back to 0px so the transition starts from 0
+  el.style.opacity = "0";
+
+  requestAnimationFrame(() => {
+    el.style.transition = "height 300ms ease-in-out, opacity 300ms ease-in-out";
+    el.style.height = fullHeight;
     el.style.opacity = "1";
+
+    const handleAnimationEnd = () => {
+      el.style.height = "auto"; // Reset height to auto after the transition
+      el.removeEventListener('transitionend', handleAnimationEnd);
+    };
+    el.addEventListener('transitionend', handleAnimationEnd);
   });
 };
 
-const leave = (el: any) => {
-  el.style.transition = "all 300ms ease-in-out";
-  el.style.height = "0";
-  el.style.opacity = "0";
+
+const leave = (el: HTMLElement) => {
+  el.style.height = el.scrollHeight + "px"; // Set the height to the current scrollHeight
+  el.style.opacity = "1";
+
+  requestAnimationFrame(() => {
+    el.style.transition = "height 300ms ease-in-out, opacity 300ms ease-in-out";
+    el.style.height = "0px";
+    el.style.opacity = "0";
+  });
 };
 </script>
 
@@ -108,3 +125,4 @@ const leave = (el: any) => {
   opacity: 1;
 }
 </style>
+

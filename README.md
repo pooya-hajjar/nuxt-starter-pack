@@ -7,6 +7,7 @@ Welcome to the Nuxt.js Starter Pack! This repository is designed to give you a h
 This starter pack includes:
 
 - **Nuxt.js**: A powerful framework for building server-side rendered applications, static websites, and more.
+- **High-Level Components**: A collection of thoroughly tested and debugged high-level customizable components (try features of u-text-input, u-btn, u-dialog for testing).
 - **Pinia**: A lightweight and intuitive state management library for Vue.js.
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development, with dynamic class support.
 - **Nuxt Image**: An optimized image handling module for Nuxt.js.
@@ -35,14 +36,26 @@ Feel free to add or remove Nuxt modules based on your project's needs. Update th
 
 Add your custom components to the `components/` directory and composables to the `composables/` directory. This structure helps maintain a clean and organized project.
 
-### Utils Functions
+## USAGE
 
-Add your custom components to the `components/` directory and composables to the `composables/` directory. This structure helps maintain a clean and organized project.
+install the pack globally
+```bash
+npm i create-nuxt-starter-pack -g
+```
+
+run the script
+```bash
+npx create-nuxt-starter [project-name]
+```
 
 ## TODO
 
 - [ ] Add a CLI tool to make setup and customization easier.
 - [ ] Enhance and expand the starter pack features.
+
+
+
+
 
 
 
